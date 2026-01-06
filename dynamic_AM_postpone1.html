@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Single AM Machine Scheduling</title>
+    <!-- 引入 Tailwind CSS 进行快速样式设计 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 FontAwesome 图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 设置字体 -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* 自定义 PDF 阅读器容器高度 */
+        .pdf-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 比例 */
+        }
+        .pdf-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-slate-800 antialiased">
+
+    <!-- 导航/头部 -->
+    <div class="max-w-4xl mx-auto px-6 py-12">
+        
+        <!-- 标题部分 -->
+        <header class="text-center mb-12">
+            <h1 class="text-xl md:text-2xl font-bold mb-6 text-slate-900 leading-tight">
+                Dynamic Single Additive Manufacturing Machine Scheduling Considering Postponement Decisions: <br class="hidden md:block" />
+                <span class="text-blue-700">A Lookahead Approximate Dynamic Programming</span>
+            </h1>
+
+            <!-- 作者列表 -->
+            <div class="flex flex-wrap justify-center gap-6 text-lg mb-4">
+                <!-- 替换 href="#" 为作者主页链接 -->
+                <a href="https://www.researchgate.net/profile/Hao-Wu-459" class="text-blue-600 hover:underline font-medium">Hao Wu (吴昊)</a>
+                <a href="https://www.researchgate.net/profile/Chunlong-Yu" class="text-blue-600 hover:underline font-medium">Chunlong Yu* (余春龙)</a>
+            </div>
+            
+            <div class="text-slate-600 mb-8">
+                School of Mechanical Engineering, Tongji University
+            </div>
+
+            <!-- 顶部链接按钮 -->
+            <div class="flex flex-wrap justify-center gap-4">
+                <!-- 论文链接 -->
+                <a href="https://github.com/HaoWuTongji/Dynamic_AM_Scheduling_with_Postponement/blob/main/Manuscript/%5BWu%20and%20Yu%5D%20Dynamic%20Single%20Additive%20Manufacturing%20Machine%20Scheduling%20Considering%20Postponement%20Decisions_A%20Lookahead%20Approximate%20Dynamic%20Programming.pdf" class="flex items-center gap-2 bg-slate-800 text-white px-4 py-2 rounded-lg hover:bg-slate-700 transition">
+                    <i class="fa-solid fa-file-pdf"></i> Paper
+                </a>
+                <!-- 代码链接 -->
+                <a href="https://github.com/HaoWuTongji/Dynamic_AM_Scheduling_with_Postponement/tree/main/Code" class="flex items-center gap-2 bg-slate-800 text-white px-4 py-2 rounded-lg hover:bg-slate-700 transition">
+                    <i class="fa-brands fa-github"></i> Code
+                </a>
+                <!-- 数据/算例链接 -->
+                <a href="https://github.com/HaoWuTongji/Dynamic_AM_Scheduling_with_Postponement/tree/main/Experiments" class="flex items-center gap-2 bg-slate-800 text-white px-4 py-2 rounded-lg hover:bg-slate-700 transition">
+                    <i class="fa-solid fa-chart-simple"></i> Experiments
+                </a>
+            </div>
+        </header>
+
+        <!-- 图形化摘要 (Graphical Abstract) -->
+        <section class="mb-16">
+            <div class="bg-white p-2 rounded-xl shadow-sm border border-gray-200">
+                <!-- 【请替换图片】 src 填入您的图形化摘要图片路径，如 images/graphical_abstract.png https://placehold.co/1200x600/f3f4f6/a3a3a3?text=Graphical+Abstract+(Please+Replace)-->
+                <img src="assets/Graph_Abstract.png" 
+                     alt="Graphical Abstract" 
+                     class="w-full h-auto rounded-lg">
+            </div>
+        </section>
+
+        <!-- 摘要 (Abstract) -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold mb-4 border-b pb-2 border-gray-200">Abstract</h2>
+            <p class="text-justify leading-relaxed text-slate-700">
+                Additive manufacturing (AM), facing challenges of high costs, is driving service providers toward social manufacturing by pooling distributed orders to amortize fixed expenses. However, for a single-machine operator in such systems, real-time scheduling under stochastic order arrivals presents a critical challenge: balancing immediate processing for tardiness reduction against strategic postponement for cost-effective batch consolidation. To address this challenge, this study formulates the dynamic decision-making problem as a finite-horizon Markov decision process, explicitly incorporating postponement as a proactive strategic choice. The objective is to derive a policy to optimally guide the decision of postponement and batching to maximize long-term profitability. To overcome the curse of dimensionality inherent in the vast state, decision, and outcome spaces, we propose an approximate dynamic programming approach. Specifically, a direct lookahead approximation policy is constructed, enabling the online simulation of future system states. The computational challenges are addressed by a Monte Carlo tree search framework for efficient lookahead tree evaluation, a one-step lookahead for the design of lookahead policy, and a Best-Fit heuristic, combined with a Pareto-based filtering strategy for high-quality feasible decision space generation. Furthermore, a deterministic mixed-integer linear program assuming full prior knowledge of all arrivals is formulated as a benchmark to evaluate the performance of the proposed policy. Extensive numerical experiments demonstrate that the proposed policy significantly outperforms traditional reactive scheduling rules and static heuristics, achieving an average empirical competitive ratio of 1.27 against the offline optimum. The results highlight the substantial economic value of strategic postponement and essential efficiency of lookahead-based policy in dynamic AM environments.
+            </p>
+        </section>
+
+        <!-- Highlights -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold mb-4 border-b pb-2 border-gray-200">Highlights</h2>
+            <ul class="list-disc list-outside ml-5 space-y-2 text-slate-700">
+                <li><span class="font-semibold">Explicit Formulation:</span> Modeled single AM machine scheduling problem as a finite-horizon Markov Decision Process where postponement is an active strategic choice.</li>
+                <li><span class="font-semibold">Lookahead Approximation Policy:</span> Developed a Direct Lookahead Approximation policy utilizing Monte Carlo Tree Search for online decision-making.</li>
+                <li><span class="font-semibold">Value of Postponement:</span> Demonstrated how postponement decouples decisions with stochastic arrivals, filtering short-term noise to form high-density batches.</li>
+                <li><span class="font-semibold">Scalability:</span> The approach provides high-quality solutions in real-time, effectively identifying "windows of opportunity" to consolidate orders without incurring excessive delays.</li>
+            </ul>
+        </section>
+
+        <!-- 精简的文章要点概述 (Overview) -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold mb-6 border-b pb-2 border-gray-200">Key Features</h2>
+            
+            <!-- Point 1: The Problem -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 items-center">
+                <div>
+                    <h3 class="text-xl font-semibold mb-2">The Scheduling Challenge</h3>
+                    <p class="text-slate-700">
+                        In Additive Manufacturing service bureaus, orders arrive stochastically. The operator must decide in real-time whether to <strong>Process</strong> the current batch immediately or <strong>Postpone</strong> to wait for more orders. This tradeoff balances the economies of scale (batching efficiency) against the risk of order tardiness.
+                    </p>
+                </div>
+                <div class="bg-white p-2 rounded-lg shadow-sm border">
+                    <!-- 【请替换图片】 问题描述示意图 https://placehold.co/600x400/f3f4f6/a3a3a3?text=Problem+Definition+Image-->
+                    <img src="assets/AM_Postpone.png" alt="Problem Definition" class="w-full rounded">
+                </div>
+            </div>
+
+            <!-- Point 2: The Solution (ADP) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 items-center md:flex-row-reverse">
+                <div class="bg-white p-2 rounded-lg shadow-sm border order-last md:order-first">
+                    <!-- 【请替换图片】 方法架构图 https://placehold.co/600x400/f3f4f6/a3a3a3?text=ADP+Structure+Image-->
+                    <img src="assets/DLA.png" alt="ADP Structure" class="w-full rounded">
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-2">Approximate Dynamic Programming</h3>
+                    <p class="text-slate-700">
+                        We model the problem as a Markov Decision Process (MDP). To solve the curse of dimensionality, we employ a <strong>Direct Lookahead Approximation (DLA)</strong> policy. This uses <strong>Monte Carlo Tree Search (MCTS)</strong> to simulate future trajectories and estimate the value of current actions, enabling near-optimal online decisions.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 交互式仿真器 (Interactive Simulator) -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold mb-6 border-b pb-2 border-gray-200">Interactive Simulator</h2>
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-3">
+                    <!-- 视频区域 (占 2/3) -->
+                    <div class="md:col-span-2 bg-black relative aspect-video">
+                        <!-- 【请替换视频】 您的演示视频。可以是 mp4 文件，也可以是 Youtube/Bilibili iframe -->
+                        <!-- 示例使用 video 标签 -->
+                        <div class="absolute inset-0 flex items-center justify-center text-white">
+                            <span class="text-center">
+                                <i class="fa-regular fa-circle-play text-4xl mb-2"></i><br>
+                                [Video Placeholder]<br>
+                                Replace with &lt;video&gt; or &lt;iframe&gt;
+                            </span>
+                        </div>
+                        <!-- 真正使用时取消下面注释并替换 src your-demo-video.mp4-->
+                        <video controls class="w-full h-full">
+                            <source src="assets/simulator.MP4" type="video/mp4">
+                        </video> 
+                    </div>
+                    
+                    <!-- 描述与链接区域 (占 1/3) -->
+                    <div class="p-6 flex flex-col justify-center bg-slate-50">
+                        <h3 class="text-lg font-bold mb-2">Try it yourself</h3>
+                        <p class="text-sm text-slate-600 mb-6">
+                            We open-sourced the interactive simulator environment. You can visualize the postponing and batching process and test different policies.
+                        </p>
+                        <a href="https://github.com/HaoWuTongji/Dynamic_AM_Scheduling_with_Postponement/releases/tag/Interactive_Simulator" class="text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition">
+                            <i class="fa-solid fa-gamepad mr-2"></i> Launch Simulator
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 算例与数值实验结果 (Results) Our ADP approach demonstrates superior scalability compared to Offline MILP, maintaining near-optimal performance (ECR ≈ 1.30) even in long-horizon scenarios where exact methods timeout.-->
+        <section id="results" class="mb-16">
+            <h2 class="text-2xl font-bold mb-6 border-b pb-2 border-gray-200">Numerical Experiments</h2>
+            <p class="mb-6 text-slate-700">
+Extensive numerical experiments demonstrate that the proposed policy significantly outperforms reactive scheduling rules and static heuristics, achieving an average empirical competitive ratio of 1.27 against the offline optimum.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                 <!-- 【请替换图片】 实验结果图表 1 https://placehold.co/800x500/f3f4f6/a3a3a3?text=Results+Chart+1+(Comparison)-->
+                <div class="bg-white p-2 border rounded shadow-sm">
+                    <img src="assets/main_result.png" alt="Results 1" class="w-full">
+                </div>
+                 <!-- 【请替换图片】 实验结果图表 2 https://placehold.co/800x500/f3f4f6/a3a3a3?text=Results+Chart+2+(Scalability)-->
+                <div class="bg-white p-2 border rounded shadow-sm">
+                    <img src="assets/scheduling_process.png" alt="Results 2" class="w-full">
+                </div>
+            </div>
+            <div class="mt-6 text-center">
+                <a href="https://github.com/HaoWuTongji/Dynamic_AM_Scheduling_with_Postponement/tree/main/Experiments" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium">
+                    View Full Experimental Data <i class="fa-solid fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Presentation Slides (PDF 预览) -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold mb-6 border-b pb-2 border-gray-200">Presentation Slides</h2>
+            <p class="mb-4 text-slate-700 text-sm">
+                Presented at IE Forum 2025.12.14, Tsinghua University.
+            </p>
+            <div class="pdf-container shadow-lg">
+                <!-- 【请替换链接】 src 填入您的 PDF 文件路径。
+                     注意：如果是 GitHub Pages，路径通常是 ./slides.pdf 
+                     有些浏览器可能不支持直接嵌入 PDF，建议同时提供下载链接 -->
+                <iframe src="assets/PPT.pdf" title="Presentation Slides"></iframe>
+            </div>
+            <div class="mt-2 text-right">
+                <a href="assets/PPT.pdf" target="_blank" class="text-sm text-blue-600 hover:underline">
+                    <i class="fa-solid fa-download"></i> Download Slides (PDF)
+                </a>
+            </div>
+        </section>
+
+        <!-- 页脚/引用  &nbsp;&nbsp;journal={European Journal of Operational Research},<br>-->
+        <footer class="border-t pt-8 pb-12 text-center text-slate-500 text-sm">
+            <p class="mb-4">&copy; 2025 Hao Wu & Chunlong Yu. All rights reserved.</p>
+            <div class="max-w-2xl mx-auto bg-white p-4 rounded border text-left font-mono text-xs overflow-x-auto">
+                @article{wu2026DynamicAMPostpone,<br>
+                &nbsp;&nbsp;title={Dynamic Single Additive Manufacturing Machine Scheduling Considering Postponement Decisions: A Lookahead Approximate Dynamic Programming},<br>
+                &nbsp;&nbsp;author={Wu, Hao and Yu, Chunlong},<br>
+                &nbsp;&nbsp;year={2026}<br>
+                }
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>
